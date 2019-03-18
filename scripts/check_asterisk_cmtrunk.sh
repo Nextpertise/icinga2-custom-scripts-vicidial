@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cmtrunk=$(/usr/sbin/asterisk -rvx 'sip show peers' | grep cmcom | grep 'OK' | wc -l)
+cmtrunk=$(/usr/sbin/asterisk -rvx 'sip show peers' | egrep -i 'flux|cmcom|didlogic|bmnr|own' | grep 'OK' | wc -l)
 
 if [ "${cmtrunk}" == "0" ]; then
 
