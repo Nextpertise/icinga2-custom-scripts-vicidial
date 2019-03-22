@@ -10,14 +10,14 @@ if [ -z "${critical}" ]; then
 	critical=0
 fi
 
-swapusage=$(free | grep Swap | awk '{print $3}')
+swapusage=$(free -k | grep Swap | awk '{print $3}')
 if [ "${swapusage}" -gt "${critical}" ]; then
-        echo "Critical - ${swapusage}k on swap used"
+        echo "Critical - ${swapusage}Kb on swap used"
         exit 2
 elif [ "${swapusage}" -gt "${warning}" ]; then
-        echo "Warning - ${swapusage}k on swap used"
+        echo "Warning - ${swapusage}Kb on swap used"
         exit 1
 fi
 
-echo "OK - ${swapusage} on swap used"
+echo "OK - ${swapusage}Kb on swap used"
 exit 0
