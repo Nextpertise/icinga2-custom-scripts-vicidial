@@ -1,7 +1,14 @@
 #!/bin/bash
 
-warning=$1
-critical=$2
+
+while getopts w:c: option
+do
+case "${option}"
+in
+w) warning=${OPTARG};;
+c) critical=${OPTARG};;
+esac
+done
 
 if [ -z "${warning}" ]; then
 	warning=0
